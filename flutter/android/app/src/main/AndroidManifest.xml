@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="no.itverket.itdagene.flutter">
+    package="me.roadtrip">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

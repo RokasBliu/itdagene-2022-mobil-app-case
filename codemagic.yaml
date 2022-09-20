@@ -33,6 +33,8 @@ workflows:
         recipients:
           - abe@itverket.no
           - bv@itverket.no
+          - rokasb@stud.ntnu.no
+          - joachan@stud.ntnu.no
         notify:
           success: true
           failure: false

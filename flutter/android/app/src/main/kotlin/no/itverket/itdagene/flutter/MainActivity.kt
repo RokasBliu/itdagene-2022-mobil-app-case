@@ -1,4 +1,4 @@
-package no.itverket.itdagene.flutter
+package me.roadtrip
 
 import io.flutter.embedding.android.FlutterActivity
 
