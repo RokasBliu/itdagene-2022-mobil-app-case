@@ -33,6 +33,7 @@ workflows:
         recipients:
           - abe@itverket.no
           - bv@itverket.no
+          - elias.nodland@protonmail.com
         notify:
           success: true
           failure: false
