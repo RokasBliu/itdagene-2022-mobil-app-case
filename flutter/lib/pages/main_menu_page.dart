@@ -5,33 +5,11 @@ import 'package:itverket_itdagene_flutter/pages/game.dart';
 import 'package:itverket_itdagene_flutter/theme/palette.dart';
 
 class MainMenuPage extends StatelessWidget {
-  const MainMenuPage(this.title, {Key? key}) : super(key: key);
-
-  final String title;
+  const MainMenuPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      /*body: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          _modeButton(
-            context,
-            const ColleaguesImagePage('Alle ITverkets ansikter'),
-            "Eksempel 1",
-          ),
-          _modeButton(
-            context,
-            const ColleaguesNamePage('Alle ITverkets navn'),
-            'Eksempel 2',
-          ),
-        ],
-      ),*/
-      body: Game(key: key)
-    );
+    return SafeArea(child: Game(key: key));
   }
 
   Padding _modeButton(BuildContext context, Widget route, String buttonText) {

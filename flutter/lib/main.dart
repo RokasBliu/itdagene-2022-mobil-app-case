@@ -3,7 +3,7 @@ import 'package:itverket_itdagene_flutter/domain/colleagues.dart';
 import 'package:itverket_itdagene_flutter/pages/main_menu_page.dart';
 import 'package:itverket_itdagene_flutter/theme/material_color_generator.dart';
 import 'package:itverket_itdagene_flutter/theme/palette.dart';
-import 'package:itverket_itdagene_flutter/components/random_image.dart';
+import 'package:itverket_itdagene_flutter/components/game_image.dart';
 
 void main() {
   runApp(const MainAppWidget());
@@ -21,7 +21,7 @@ class MainAppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: generateMaterialColor(Palette.primary),
       ),
-      home: const MainMenuPage('Velg modus'),
+      home: const MainMenuPage(),
     );
   }
 }

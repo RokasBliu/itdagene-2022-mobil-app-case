@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:itverket_itdagene_flutter/components/game_image.dart';
 import 'package:itverket_itdagene_flutter/domain/colleagues.dart';
+import '../domain/colleague.dart';
 
 class Game extends StatefulWidget {
   ColleagueCollection colleagues;
 
-  Game({Key? key}) : colleagues = ColleagueCollection.newEmpty(), super(key: key);
+  Game({Key? key})
+      : colleagues = ColleagueCollection.newEmpty(),
+        super(key: key);
 
   @override
   State<Game> createState() => _GameState(colleagues);
@@ -12,15 +16,37 @@ class Game extends StatefulWidget {
 
 class _GameState extends State<Game> {
   ColleagueCollection colleagues;
+  Colleague? curColleague;
 
   _GameState(this.colleagues) : super();
 
+  Future<Colleague> _fetchAndPop() =>
+      colleagues.fetchAll().then((_) => colleagues.popRandom());
+
   @override
   Widget build(BuildContext context) {
-    return Column(children: const [
-      Text("IMAGE"),
-      Text("TEXT"),
-      Text("KEYBOARD")
-    ],);
+    return FutureBuilder(
+        future: _fetchAndPop(),
+        builder: (BuildContext context, AsyncSnapshot<Colleague> snapshot) {
+          var colleague = snapshot.data;
+          if (colleague != null) {
+            return Column(
+              children: [
+                    SizedBox(
+                        height: MediaQuery.of(context).size.height / 3,
+                        width: MediaQuery.of(context).size.width,
+                        child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: GameImage(snapshot.data?.imageUrl ?? ""))),
+                const Text("TEXT"),
+                const Text("KEYBOARD")
+              ],
+            );
+          } else {
+            return const Center(
+              child: Text("LOADING"),
+            );
+          }
+        });
   }
 }
