@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:itverket_itdagene_flutter/domain/colleague.dart';
 
-const String _apiToken = "insert_real_api_token_here"; // TODO get this from instructors
+const String _apiToken = "mKJCxaVuYh7BKL1BPlF6IKnwpWV7OILSBBLftRLa4XRd8m9CZWtBpg==";
 
 Future<List<Colleague>> fetchColleagues() async {
   dynamic response = await http.get(Uri.parse(

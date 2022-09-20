@@ -20,9 +20,9 @@ class ColleaguesImagePage extends StatelessWidget {
       appBar: AppBar(title: Text(title)),
       body: FutureBuilder(
         future: _getImageUrls(),
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
           if (snapshot.hasData) {
-            List<String> imageUrls = snapshot.data;
+            List<String> imageUrls = snapshot.data ?? List.empty();
             return GridView(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,

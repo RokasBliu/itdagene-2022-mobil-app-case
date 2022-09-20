@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:itverket_itdagene_flutter/pages/colleagues_image_page.dart';
 import 'package:itverket_itdagene_flutter/pages/colleagues_name_page.dart';
+import 'package:itverket_itdagene_flutter/pages/game.dart';
 import 'package:itverket_itdagene_flutter/theme/palette.dart';
 
 class MainMenuPage extends StatelessWidget {
@@ -12,7 +13,7 @@ class MainMenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Column(
+      /*body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -28,7 +29,8 @@ class MainMenuPage extends StatelessWidget {
             'Eksempel 2',
           ),
         ],
-      ),
+      ),*/
+      body: Game(key: key)
     );
   }
 
