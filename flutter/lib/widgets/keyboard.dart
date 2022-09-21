@@ -10,7 +10,33 @@ class Keyboard extends StatelessWidget {
 
   final Function callback;
 
-  const Keyboard(this.callback, {Key? key}) : super(key: key);
+  final Set<String> usedLetters;
+  final Set<String> partialLetters;
+  final Set<String> foundLetters;
+
+  const Keyboard(
+      this.callback, this.usedLetters, this.partialLetters, this.foundLetters,
+      {Key? key})
+      : super(key: key);
+
+  Color _keyColor(KeyboardKey kbKey) {
+    switch (kbKey.type) {
+      case KeyType.enter:
+        return Colors.blue;
+      case KeyType.backspace:
+        return Colors.red;
+      case KeyType.letter:
+        if (foundLetters.contains(kbKey.semantic)) {
+          return Colors.green;
+        } else if (partialLetters.contains(kbKey.semantic)) {
+          return Colors.orange;
+        } else if (usedLetters.contains(kbKey.semantic)) {
+          return Colors.grey.shade800;
+        } else {
+          return Colors.grey.shade500;
+        }
+    }
+  }
 
   Widget _buildKey(double width, KeyboardKey kbKey) {
     return Semantics(
@@ -33,7 +59,7 @@ class Keyboard extends StatelessWidget {
                   color: Colors.grey.shade500,
                 ),
                 borderRadius: const BorderRadius.all(Radius.circular(7)),
-                color: Colors.grey.shade800,
+                color: _keyColor(kbKey),
               ),
               child: ExcludeSemantics(
                 excluding: true,
@@ -77,10 +103,10 @@ class Keyboard extends StatelessWidget {
         .toList(growable: true);
 
     layout[2].add(_buildKey(1.5 * MediaQuery.of(context).size.width / 11,
-        const KeyboardKey("⏎", "enter", KeyType.enter)));
+        const KeyboardKey("⌫", "backspace", KeyType.backspace)));
 
     layout[2].add(_buildKey(1.5 * MediaQuery.of(context).size.width / 11,
-        const KeyboardKey("⌫", "backspace", KeyType.backspace)));
+        const KeyboardKey("⏎", "enter", KeyType.enter)));
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
