@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.roadtrip">
+    package="me.roadtrip.knowell">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
    <application
-        android:label="itdagene_flutter"
+        android:label="Knowell"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

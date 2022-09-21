@@ -13,12 +13,27 @@ class MainMenuPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         // child: Game(key: key),
-        child: Column(
-          children: [
-            Center(child: _modeButton(context, Scaffold(body: Game(key: key)), "GAME")),
-            _modeButton(context, Scaffold(body: Highscore(key: key)), "Highscore")
-          ]
-        ),
+        child: Column(children: [
+          Column(
+            children: const [
+              Center(child: Image(image: AssetImage('images/logo_black.png'))),
+              Center(
+                child: Text(
+                  'KNOWELL',
+                  style: TextStyle(
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                    fontSize:50,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Center(
+              child:
+                  _modeButton(context, Scaffold(body: Game(key: key)), "GAME")),
+          _modeButton(context, Scaffold(body: Highscore(key: key)), "HIGHSCORE")
+        ]),
       ),
     );
   }
@@ -29,9 +44,8 @@ class MainMenuPage extends StatelessWidget {
       child: TextButton(
         onPressed: () => _navigateToRoute(context, route),
         style: TextButton.styleFrom(
-          side: const BorderSide(color: Palette.primary),
-          textStyle: const TextStyle(fontSize: 40)
-        ),
+            side: const BorderSide(color: Palette.primary),
+            textStyle: const TextStyle(fontSize: 40)),
         child: Text(buttonText),
       ),
     );

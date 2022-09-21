@@ -1,4 +1,4 @@
-package me.roadtrip
+package me.roadtrip.knowell
 
 import io.flutter.embedding.android.FlutterActivity
 

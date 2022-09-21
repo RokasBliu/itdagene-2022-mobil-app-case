@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "me.roadtrip"
+        applicationId "me.roadtrip.knowell"
         minSdkVersion 23
         targetSdkVersion 32
         versionCode flutterVersionCode.toInteger()
