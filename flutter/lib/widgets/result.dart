@@ -1,26 +1,43 @@
 import 'package:flutter/material.dart';
 
-class Input extends StatelessWidget {
-  final List<String> stuff;
-  const Input(this.stuff, {Key? key}) : super(key: key);
+class Result extends StatelessWidget {
+  final List<String> target;
+  final List<bool> found;
+  const Result(this.target, this.found, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> thing = [];
+
+    target.asMap().forEach((i, c) => {
+          thing.add(
+              _buildKey(MediaQuery.of(context).size.width / 11, c, found[i]))
+        });
+
+    int highest = -1;
+    for (int i = 0; i < target.length; i++) {
+      if (found[i]) {
+        highest = i;
+      }
+    }
+
+    for (int i = highest + 1; i < target.length; i++) {
+      thing.removeLast();
+    }
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
         height: 51.0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: stuff
-              .map((s) => _buildKey(MediaQuery.of(context).size.width / 11, s))
-              .toList(),
+          children: thing,
         ),
       ),
     );
   }
 
-  Widget _buildKey(double width, String text) {
+  Widget _buildKey(double width, String text, bool found) {
     return SizedBox(
       width: width,
       height: 45,
@@ -31,13 +48,13 @@ class Input extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: Colors.grey.shade500,
+              color: found ? Colors.green : Colors.grey.shade500,
             ),
             borderRadius: const BorderRadius.all(Radius.circular(7)),
-            color: Colors.grey.shade500,
+            color: found ? Colors.green : Colors.grey.shade500,
           ),
           child: Text(
-            text,
+            found ? text : "",
             textAlign: TextAlign.center,
             style: const TextStyle(
                 fontSize: 14,

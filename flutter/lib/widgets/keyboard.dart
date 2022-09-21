@@ -39,38 +39,34 @@ class Keyboard extends StatelessWidget {
   }
 
   Widget _buildKey(double width, KeyboardKey kbKey) {
-    return Semantics(
-      label: kbKey.symbol,
-      keyboardKey: true,
-      child: GestureDetector(
-        onTap: () {
-          callback(kbKey);
-        },
-        child: SizedBox(
-          width: width,
-          height: 45,
-          child: Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 1,
-                  color: Colors.grey.shade500,
-                ),
-                borderRadius: const BorderRadius.all(Radius.circular(7)),
-                color: _keyColor(kbKey),
+    return GestureDetector(
+      onTap: () {
+        callback(kbKey);
+      },
+      child: SizedBox(
+        width: width,
+        height: 45,
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1,
+                color: Colors.grey.shade500,
               ),
-              child: ExcludeSemantics(
-                excluding: true,
-                child: Text(
-                  kbKey.symbol,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
-                      decoration: TextDecoration.none),
-                ),
+              borderRadius: const BorderRadius.all(Radius.circular(7)),
+              color: _keyColor(kbKey),
+            ),
+            child: ExcludeSemantics(
+              excluding: true,
+              child: Text(
+                kbKey.symbol,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                    decoration: TextDecoration.none),
               ),
             ),
           ),
