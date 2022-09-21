@@ -45,7 +45,7 @@ class _GameState extends State<Game> {
                         fit: BoxFit.contain,
                         child: GameImage(snapshot.data?.imageUrl ?? ""))),
                 Center(child: GameText(colleague.firstName(), guessedNames)),
-                Inner(colleague.firstName().toUpperCase()),
+                Inner(colleague.firstName().toUpperCase(), () {}),
               ],
             );
           } else {
