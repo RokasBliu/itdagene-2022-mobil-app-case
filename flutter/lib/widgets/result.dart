@@ -11,7 +11,7 @@ class Result extends StatelessWidget {
 
     target.asMap().forEach((i, c) => {
           thing.add(
-              _buildKey(MediaQuery.of(context).size.width / 11, c, found[i]))
+              _buildKey(MediaQuery.of(context).size.width / 12, c, found[i]))
         });
 
     int highest = -1;
@@ -40,7 +40,7 @@ class Result extends StatelessWidget {
   Widget _buildKey(double width, String text, bool found) {
     return SizedBox(
       width: width,
-      height: 45,
+      height: 35,
       child: Padding(
         padding: const EdgeInsets.all(2.0),
         child: Container(
