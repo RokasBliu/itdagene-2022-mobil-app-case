@@ -38,14 +38,21 @@ class _GameState extends State<Game> {
         builder: (BuildContext context, AsyncSnapshot<Colleague> snapshot) {
           var colleague = snapshot.data;
           if (colleague != null) {
+            if (!validNames.contains(colleague.firstName().toUpperCase())) {
+              colleague = colleagues.popRandom();
+            }
             return Column(children: [
               Align(
                   child: SizedBox(
                       height: MediaQuery.of(context).size.height * 4 / 7,
                       width: MediaQuery.of(context).size.width,
-                      child: Padding(padding: EdgeInsets.only(top: 40.0, left: 10.0, right: 10.0),child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: GameImage(snapshot.data?.imageUrl ?? ""))))),
+                      child: Padding(
+                          padding: EdgeInsets.only(
+                              top: 40.0, left: 10.0, right: 10.0),
+                          child: FittedBox(
+                              fit: BoxFit.contain,
+                              child:
+                                  GameImage(snapshot.data?.imageUrl ?? ""))))),
               SizedBox(
                   height: MediaQuery.of(context).size.height * 3 / 7,
                   width: MediaQuery.of(context).size.width,
@@ -55,9 +62,10 @@ class _GameState extends State<Game> {
                       Center(
                           child: GameText(colleague.firstName(), guessedNames)),
                       Inner(colleague.firstName().toUpperCase(), (turns) {
-                  HighscoreEntryCollection.loadAddThenSave(HighscoreEntry("Joachim", 1));
-                  Navigator.pop(context);
-                }),
+                        HighscoreEntryCollection.loadAddThenSave(
+                            HighscoreEntry("Joachim", 1));
+                        Navigator.pop(context);
+                      }),
                     ],
                   ))
             ]);
