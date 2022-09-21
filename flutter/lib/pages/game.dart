@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:itverket_itdagene_flutter/components/game_image.dart';
 import 'package:itverket_itdagene_flutter/components/game_text.dart';
 import 'package:itverket_itdagene_flutter/domain/colleagues.dart';
+import 'package:itverket_itdagene_flutter/utils/names.dart';
 import 'package:itverket_itdagene_flutter/widgets/inner.dart';
 import '../domain/colleague.dart';
 
@@ -35,17 +36,23 @@ class _GameState extends State<Game> {
         builder: (BuildContext context, AsyncSnapshot<Colleague> snapshot) {
           var colleague = snapshot.data;
           if (colleague != null) {
+            if (!validNames.contains(colleague.firstName().toUpperCase())) {
+              colleague = colleagues.popRandom();
+            }
             return Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SizedBox(
-                    height: MediaQuery.of(context).size.height / 3,
                     width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 3,
                     child: FittedBox(
                         fit: BoxFit.contain,
                         child: GameImage(snapshot.data?.imageUrl ?? ""))),
                 Center(child: GameText(colleague.firstName(), guessedNames)),
-                Inner(colleague.firstName().toUpperCase(), () {}),
+                Inner(colleague.firstName().toUpperCase(), (turns) {
+                  // print(turns);
+                  Navigator.pop(context);
+                }),
               ],
             );
           } else {
