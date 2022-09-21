@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:itverket_itdagene_flutter/components/game_image.dart';
 import 'package:itverket_itdagene_flutter/components/game_text.dart';
 import 'package:itverket_itdagene_flutter/domain/colleagues.dart';
+import 'package:itverket_itdagene_flutter/utils/highscore_entry.dart';
+import 'package:itverket_itdagene_flutter/utils/highscore_entry_collection.dart';
 import 'package:itverket_itdagene_flutter/utils/names.dart';
 import 'package:itverket_itdagene_flutter/widgets/inner.dart';
 import '../domain/colleague.dart';
@@ -51,6 +53,7 @@ class _GameState extends State<Game> {
                 Center(child: GameText(colleague.firstName(), guessedNames)),
                 Inner(colleague.firstName().toUpperCase(), (turns) {
                   // print(turns);
+                  HighscoreEntryCollection.loadAddThenSave(HighscoreEntry("Joachim", 1));
                   Navigator.pop(context);
                 }),
               ],
