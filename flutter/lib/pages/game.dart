@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:itverket_itdagene_flutter/components/game_image.dart';
 import 'package:itverket_itdagene_flutter/components/game_text.dart';
@@ -58,7 +60,7 @@ class _GameState extends State<Game> {
                   ),
                   Inner(colleague.firstName().toUpperCase(), (turns) {
                     HighscoreEntryCollection.loadAddThenSave(
-                      HighscoreEntry("Joachim", 1),
+                      HighscoreEntry("Joachim", max(colleague!.firstName().length - ((turns as int) - 1), 1)),
                     );
                     Navigator.pop(context);
                   }),
