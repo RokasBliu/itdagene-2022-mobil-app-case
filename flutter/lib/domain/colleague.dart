@@ -15,4 +15,6 @@ class Colleague {
     'Image': imageUrl,
     'Gender': gender,
   };
+
+  String firstName() => name.split(" ").first;
 }

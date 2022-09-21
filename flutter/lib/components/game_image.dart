@@ -12,7 +12,7 @@ class GameImage extends StatelessWidget {
       // placeholder: (context, url) => const CircularProgressIndicator(),
       progressIndicatorBuilder: (context, url, downloadProgress) =>
           Padding(padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0), child: CircularProgressIndicator(value: downloadProgress.progress)),
-      errorWidget: (context, url, error) => Text("Error"),
+      errorWidget: (context, url, error) => const Text("Error"),
     );
   }
 }

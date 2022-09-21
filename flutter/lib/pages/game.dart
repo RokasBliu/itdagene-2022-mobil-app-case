@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:itverket_itdagene_flutter/components/game_image.dart';
+import 'package:itverket_itdagene_flutter/components/game_text.dart';
 import 'package:itverket_itdagene_flutter/domain/colleagues.dart';
 import '../domain/colleague.dart';
 
@@ -17,8 +18,9 @@ class Game extends StatefulWidget {
 class _GameState extends State<Game> {
   ColleagueCollection colleagues;
   Colleague? curColleague;
+  Set<String> guessedNames;
 
-  _GameState(this.colleagues) : super();
+  _GameState(this.colleagues) : guessedNames = {}, super();
 
   Future<Colleague> _fetchAndPop() =>
       colleagues.fetchAll().then((_) => colleagues.popRandom());
@@ -38,7 +40,7 @@ class _GameState extends State<Game> {
                         child: FittedBox(
                             fit: BoxFit.contain,
                             child: GameImage(snapshot.data?.imageUrl ?? ""))),
-                const Text("TEXT"),
+                Center(child: GameText(colleague.firstName(), guessedNames)),
                 const Text("KEYBOARD")
               ],
             );
