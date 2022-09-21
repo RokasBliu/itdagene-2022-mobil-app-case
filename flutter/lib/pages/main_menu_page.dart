@@ -9,7 +9,11 @@ class MainMenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Game(key: key));
+    return Scaffold(
+      body: SafeArea(
+        child: Game(key: key),
+      ),
+    );
   }
 
   Padding _modeButton(BuildContext context, Widget route, String buttonText) {

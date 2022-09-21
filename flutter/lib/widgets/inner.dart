@@ -65,30 +65,27 @@ class _InnerState extends State<Inner> {
   @override
   Widget build(BuildContext context) {
     target = widget.target.split("").toList();
-    return FittedBox(
-      fit: BoxFit.fill,
-      child: Column(
-        children: [
-          Result(target, found),
-          Input(stuff),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Keyboard((k) {
-              switch (k.type) {
-                case KeyType.enter:
-                  enter();
-                  break;
-                case KeyType.backspace:
-                  backspace();
-                  break;
-                case KeyType.letter:
-                  letter(k.semantic);
-                  break;
-              }
-            }, usedLetters, partialLetters, foundLetters),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Result(target, found),
+        Input(stuff),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Keyboard((k) {
+            switch (k.type) {
+              case KeyType.enter:
+                enter();
+                break;
+              case KeyType.backspace:
+                backspace();
+                break;
+              case KeyType.letter:
+                letter(k.semantic);
+                break;
+            }
+          }, usedLetters, partialLetters, foundLetters),
+        ),
+      ],
     );
   }
 }
