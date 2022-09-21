@@ -35,19 +35,26 @@ class _GameState extends State<Game> {
         builder: (BuildContext context, AsyncSnapshot<Colleague> snapshot) {
           var colleague = snapshot.data;
           if (colleague != null) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(
-                    height: MediaQuery.of(context).size.height / 3,
-                    width: MediaQuery.of(context).size.width,
-                    child: FittedBox(
-                        fit: BoxFit.contain,
-                        child: GameImage(snapshot.data?.imageUrl ?? ""))),
-                Center(child: GameText(colleague.firstName(), guessedNames)),
-                Inner(colleague.firstName().toUpperCase()),
-              ],
-            );
+            return Column(children: [
+              Align(
+                  child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 4 / 7,
+                      width: MediaQuery.of(context).size.width,
+                      child: Padding(padding: EdgeInsets.only(top: 40.0, left: 10.0, right: 10.0),child: FittedBox(
+                          fit: BoxFit.contain,
+                          child: GameImage(snapshot.data?.imageUrl ?? ""))))),
+              SizedBox(
+                  height: MediaQuery.of(context).size.height * 3 / 7,
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Center(
+                          child: GameText(colleague.firstName(), guessedNames)),
+                      Inner(colleague.firstName().toUpperCase(), () {}),
+                    ],
+                  ))
+            ]);
           } else {
             return const Center(
               child: Text("LOADING"),

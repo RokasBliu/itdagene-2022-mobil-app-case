@@ -22,11 +22,19 @@ class Highscore extends StatelessWidget {
       var cur = iter.current;
       var name = cur.name;
       var score = cur.score;
-      widgets.add(Center(child: Row(children: [
+      var style = const TextStyle(fontSize: 30, color: Color.fromRGBO(255, 0, 0, 1.0));
+      widgets.add(Center(child: Padding(padding: EdgeInsets.symmetric(horizontal: 50.0),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
         RichText(
-            text: TextSpan(text: "$pos. $name $score", style: TextStyle(fontSize: 40, color: Color.fromRGBO(255, 0, 0, 1.0)))
+            text: TextSpan(text: "$pos.", style: style)
+        ),
+        RichText(
+            text: TextSpan(text: name, style: style)
+        ),
+        RichText(
+            text: TextSpan(text: "$score", style: style)
         )
-      ])));
+      ]))));
     }
     return widgets;
   }
