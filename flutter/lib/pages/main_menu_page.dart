@@ -22,17 +22,21 @@ class MainMenuPage extends StatelessWidget {
                   'KNOWELL',
                   style: TextStyle(
                     color: Color.fromRGBO(0, 0, 0, 1),
-                    fontSize:50,
+                    fontSize: 50,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ],
           ),
-          Center(
-              child:
-                  _modeButton(context, Scaffold(body: Game(key: key)), "GAME")),
-          _modeButton(context, Scaffold(body: Highscore(key: key)), "HIGHSCORE")
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
+            child: Column(children: [
+              _modeButton(context, Scaffold(body: Game(key: key)), "GAME"),
+              _modeButton(
+                  context, Scaffold(body: Highscore(key: key)), "HIGHSCORE"),
+            ]),
+          ),
         ]),
       ),
     );
@@ -44,9 +48,16 @@ class MainMenuPage extends StatelessWidget {
       child: TextButton(
         onPressed: () => _navigateToRoute(context, route),
         style: TextButton.styleFrom(
-            side: const BorderSide(color: Palette.primary),
-            textStyle: const TextStyle(fontSize: 40)),
-        child: Text(buttonText),
+            backgroundColor: Palette.primary,
+            textStyle: const TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+            ),
+            fixedSize: const Size(300, 70)),
+        child: Text(buttonText,
+            style: const TextStyle(
+              color: Color.fromARGB(255, 255, 255, 255),
+            )),
       ),
     );
   }
