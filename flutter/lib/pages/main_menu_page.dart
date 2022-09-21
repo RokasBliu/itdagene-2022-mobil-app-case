@@ -14,21 +14,24 @@ class MainMenuPage extends StatelessWidget {
         backgroundColor: Color.fromRGBO(255, 240, 235, 1.0),
       body: SafeArea(
         // child: Game(key: key),
-        child: Column(children: [
-          Column(
-            children: const [
-              Center(child: Image(image: AssetImage('images/logo_black.png'))),
-              Center(
-                child: Text(
-                  'KNOWELL',
-                  style: TextStyle(
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
+        child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+          Expanded(
+            child: Column(
+              children: const [
+                Center(
+                    child: Image(image: AssetImage('images/logo_black.png'))),
+                Center(
+                  child: Text(
+                    'KNOWELL',
+                    style: TextStyle(
+                      color: Color.fromRGBO(0, 0, 0, 1),
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
