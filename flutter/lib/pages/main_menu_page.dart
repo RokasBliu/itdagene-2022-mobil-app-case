@@ -11,6 +11,7 @@ class MainMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromRGBO(255, 240, 235, 1.0),
       body: SafeArea(
         // child: Game(key: key),
         child: Column(children: [
@@ -32,9 +33,9 @@ class MainMenuPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
             child: Column(children: [
-              _modeButton(context, Scaffold(body: Game(key: key)), "GAME"),
+              _modeButton(context, Scaffold(backgroundColor: Color.fromRGBO(255, 240, 235, 1.0), body: Game(key: key)), "GAME"),
               _modeButton(
-                  context, Scaffold(body: Highscore(key: key)), "HIGHSCORE"),
+                  context, Scaffold(backgroundColor: Color.fromRGBO(255, 240, 235, 1.0), body: Highscore(key: key)), "HIGHSCORE"),
             ]),
           ),
         ]),
