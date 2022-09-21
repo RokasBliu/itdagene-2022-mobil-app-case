@@ -66,7 +66,10 @@ class Keyboard extends StatelessWidget {
                 child: Text(
                   kbKey.symbol,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 14, color: Colors.white),
+                  style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      decoration: TextDecoration.none),
                 ),
               ),
             ),
