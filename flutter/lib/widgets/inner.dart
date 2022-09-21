@@ -72,10 +72,11 @@ class _InnerState extends State<Inner> {
       stuff.clear();
     });
 
+    turns++;
+
     if (finished) {
       await _showDialog();
     }
-
   }
 
   @override
@@ -113,20 +114,21 @@ class _InnerState extends State<Inner> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('AlertDialog Title'),
+          title: const Text('Du vant!'),
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[
-                Text('This is a demo alert dialog.'),
-                Text('Would you like to approve of this message?'),
+                Text('Du fikk det til!'),
+                Text('Klarer du flere navn?'),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Approve'),
+              child: const Text('Tilbake til hovedmeny'),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.pop(context);
+                widget.callback(turns);
               },
             ),
           ],

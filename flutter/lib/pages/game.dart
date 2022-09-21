@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:itverket_itdagene_flutter/components/game_image.dart';
 import 'package:itverket_itdagene_flutter/components/game_text.dart';
 import 'package:itverket_itdagene_flutter/domain/colleagues.dart';
+import 'package:itverket_itdagene_flutter/utils/highscore_entry.dart';
+import 'package:itverket_itdagene_flutter/utils/highscore_entry_collection.dart';
+import 'package:itverket_itdagene_flutter/utils/names.dart';
 import 'package:itverket_itdagene_flutter/widgets/inner.dart';
 import '../domain/colleague.dart';
 
@@ -35,6 +38,7 @@ class _GameState extends State<Game> {
         builder: (BuildContext context, AsyncSnapshot<Colleague> snapshot) {
           var colleague = snapshot.data;
           if (colleague != null) {
+<<<<<<< HEAD
             return Column(children: [
               Align(
                   child: SizedBox(
@@ -55,6 +59,28 @@ class _GameState extends State<Game> {
                     ],
                   ))
             ]);
+=======
+            if (!validNames.contains(colleague.firstName().toUpperCase())) {
+              colleague = colleagues.popRandom();
+            }
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 3,
+                    child: FittedBox(
+                        fit: BoxFit.contain,
+                        child: GameImage(snapshot.data?.imageUrl ?? ""))),
+                Center(child: GameText(colleague.firstName(), guessedNames)),
+                Inner(colleague.firstName().toUpperCase(), (turns) {
+                  // print(turns);
+                  HighscoreEntryCollection.loadAddThenSave(HighscoreEntry("Joachim", 1));
+                  Navigator.pop(context);
+                }),
+              ],
+            );
+>>>>>>> e767826c145c4de8659cd02cfdec9edb7823c0fe
           } else {
             return const Center(
               child: Text("LOADING"),

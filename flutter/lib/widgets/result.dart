@@ -14,16 +14,16 @@ class Result extends StatelessWidget {
               _buildKey(MediaQuery.of(context).size.width / 12, c, found[i]))
         });
 
-    int highest = -1;
-    for (int i = 0; i < target.length; i++) {
-      if (found[i]) {
-        highest = i;
-      }
-    }
+    // int highest = -1;
+    // for (int i = 0; i < target.length; i++) {
+    //   if (found[i]) {
+    //     highest = i;
+    //   }
+    // }
 
-    for (int i = highest + 1; i < target.length; i++) {
-      thing.removeLast();
-    }
+    // for (int i = highest + 1; i < target.length; i++) {
+    //   thing.removeLast();
+    // }
 
     return Padding(
       padding: const EdgeInsets.all(8.0),

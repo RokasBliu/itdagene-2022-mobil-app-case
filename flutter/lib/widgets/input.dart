@@ -13,7 +13,7 @@ class Input extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: stuff
-              .map((s) => _buildKey(MediaQuery.of(context).size.width / 11, s))
+              .map((s) => _buildKey(MediaQuery.of(context).size.width / 12, s))
               .toList(),
         ),
       ),
