@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:itverket_itdagene_flutter/theme/palette.dart';
 import 'package:itverket_itdagene_flutter/utils/highscore_entry.dart';
 import 'package:itverket_itdagene_flutter/utils/highscore_entry_collection.dart';
 
@@ -13,17 +14,17 @@ class Highscore extends StatelessWidget {
 
   List<Center> highscoreWidgets(HighscoreEntryCollection collection) {
     List<Center> widgets = List.empty(growable: true);
-    var value_list = collection.entries.values.toList();
-    value_list.sort((a, b) => b.score.compareTo(a.score));
-    var iter = value_list.iterator;
+    var valueList = collection.entries.values.toList();
+    valueList.sort((a, b) => b.score.compareTo(a.score));
+    var iter = valueList.iterator;
     var pos = 0;
     while(iter.moveNext()) {
       pos += 1;
       var cur = iter.current;
       var name = cur.name;
       var score = cur.score;
-      var style = const TextStyle(fontSize: 30, color: Color.fromRGBO(255, 0, 0, 1.0));
-      widgets.add(Center(child: Padding(padding: EdgeInsets.symmetric(horizontal: 50.0),
+      var style = const TextStyle(fontSize: 30, color: Palette.primary);
+      widgets.add(Center(child: Padding(padding: const EdgeInsets.symmetric(horizontal: 50.0),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
         RichText(
             text: TextSpan(text: "$pos.", style: style)
@@ -46,7 +47,7 @@ class Highscore extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<HighscoreEntryCollection> snapshot) {
           HighscoreEntryCollection? collection = snapshot.data;
           if (collection != null) {
-            var title = Container(padding: const EdgeInsets.symmetric(vertical: 25.0),child: RichText(text: const TextSpan(text:"HIGHSCORE", style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold, color: Color.fromRGBO(255, 0, 0, 1.0)))));
+            var title = Container(padding: const EdgeInsets.symmetric(vertical: 25.0),child: RichText(text: const TextSpan(text:"HIGHSCORE", style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold, color: Palette.primary))));
             var highscoreWidgetList = highscoreWidgets(collection);
             return Column(children: [Center(child: title), Column(crossAxisAlignment: CrossAxisAlignment.start,children: highscoreWidgetList,)]);
           } else {
