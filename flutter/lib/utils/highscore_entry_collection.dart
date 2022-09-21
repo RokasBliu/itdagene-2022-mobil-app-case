@@ -73,12 +73,6 @@ class HighscoreEntryCollection {
     var collection = await HighscoreEntryCollection.load();
     collection.addEntry(highscoreEntry);
     await collection.save();
-    /*
-    HighscoreEntryCollection.load().then((collection) {
-      collection.addEntry(highscoreEntry);
-      collection.save();
-    })
-    */
   }
 
   Set<HighscoreEntry> asSet() {

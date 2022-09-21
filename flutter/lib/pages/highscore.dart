@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:itverket_itdagene_flutter/utils/highscore_entry.dart';
 import 'package:itverket_itdagene_flutter/utils/highscore_entry_collection.dart';
@@ -9,8 +11,8 @@ class Highscore extends StatelessWidget {
     return await HighscoreEntryCollection.load();
   }
 
-  List<RichText> highscoreWidgets(HighscoreEntryCollection collection) {
-    List<RichText> widgets = List.empty(growable: true);
+  List<Center> highscoreWidgets(HighscoreEntryCollection collection) {
+    List<Center> widgets = List.empty(growable: true);
     var value_list = collection.entries.values.toList();
     value_list.sort((a, b) => b.score.compareTo(a.score));
     var iter = value_list.iterator;
@@ -20,7 +22,11 @@ class Highscore extends StatelessWidget {
       var cur = iter.current;
       var name = cur.name;
       var score = cur.score;
-      widgets.add(RichText(text: TextSpan(text: "$pos. $name $score", style: TextStyle(fontSize: 40))));
+      widgets.add(Center(child: Row(children: [
+        RichText(
+            text: TextSpan(text: "$pos. $name $score", style: TextStyle(fontSize: 40, color: Color.fromRGBO(255, 0, 0, 1.0)))
+        )
+      ])));
     }
     return widgets;
   }
@@ -32,9 +38,9 @@ class Highscore extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<HighscoreEntryCollection> snapshot) {
           HighscoreEntryCollection? collection = snapshot.data;
           if (collection != null) {
-            var title = Container(padding: const EdgeInsets.symmetric(vertical: 25.0),child: RichText(text: const TextSpan(text:"HIGHSCORE", style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold))));
+            var title = Container(padding: const EdgeInsets.symmetric(vertical: 25.0),child: RichText(text: const TextSpan(text:"HIGHSCORE", style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold, color: Color.fromRGBO(255, 0, 0, 1.0)))));
             var highscoreWidgetList = highscoreWidgets(collection);
-            return Column(children: [title, Column(crossAxisAlignment: CrossAxisAlignment.start,children: highscoreWidgetList,)]);
+            return Column(children: [Center(child: title), Column(crossAxisAlignment: CrossAxisAlignment.start,children: highscoreWidgetList,)]);
           } else {
             return const Text("Loading");
           }

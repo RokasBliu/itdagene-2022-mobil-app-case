@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:itverket_itdagene_flutter/pages/colleagues_image_page.dart';
 import 'package:itverket_itdagene_flutter/pages/colleagues_name_page.dart';
 import 'package:itverket_itdagene_flutter/pages/game.dart';
+import 'package:itverket_itdagene_flutter/pages/highscore.dart';
 import 'package:itverket_itdagene_flutter/theme/palette.dart';
 
 class MainMenuPage extends StatelessWidget {
@@ -11,7 +12,13 @@ class MainMenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Game(key: key),
+        // child: Game(key: key),
+        child: Column(
+          children: [
+            Center(child: _modeButton(context, Scaffold(body: Game(key: key)), "GAME")),
+            _modeButton(context, Scaffold(body: Highscore(key: key)), "Highscore")
+          ]
+        ),
       ),
     );
   }
@@ -23,6 +30,7 @@ class MainMenuPage extends StatelessWidget {
         onPressed: () => _navigateToRoute(context, route),
         style: TextButton.styleFrom(
           side: const BorderSide(color: Palette.primary),
+          textStyle: const TextStyle(fontSize: 40)
         ),
         child: Text(buttonText),
       ),
